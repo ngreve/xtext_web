@@ -1,0 +1,107 @@
+grammar de.nicogreve.dsl.expressions.Expressions with org.eclipse.xtext.common.Terminals
+
+generate expressions "http://www.nicogreve.de/dsl/expressions/Expressions"
+
+Model:
+	instructions+=Instruction*
+;
+	
+Instruction:
+	VariableDeclaration
+	| Assignment
+	| GlobalCommand
+;
+
+VariableDeclaration:
+	'var' name=ID ('=' initExp=Expression)?
+;
+
+VarRef:
+	ref=[VariableDeclaration]
+;
+
+Assignment:
+	v=VarRef '=' exp=Expression
+;
+
+GlobalCommand:
+		{PrintCommand} 'print' params+=Expression
+;
+
+//--- Arithmetic/Logic expressions --------------------
+// These are heavily inspired by the solution of Lorenzo Bettini,
+// the author of "Implementing Domain-Specific Languages with Xtext and Xtend"
+// Github: https://github.com/LorenzoBettini
+
+Expression: Or;
+
+Or returns Expression:
+	And (
+		{Or.left=current} "||" right=And
+	)*
+;
+
+And returns Expression:
+	Equality (
+		{And.left=current} "&&" right=Equality
+	)*
+;
+
+Equality returns Expression:
+	Comparison (
+		{Equality.left=current} op=("==" | "!=")
+		right=Comparison
+	)*
+;
+
+Comparison returns Expression:
+	PlusOrMinus (
+		{Comparison.left=current} op=(">=" | "<=" | ">" | "<")
+		right=PlusOrMinus
+	)*
+;
+
+PlusOrMinus returns Expression:
+	Mod (
+		({Plus.left=current} '+' | {Minus.left=current} '-')
+		right=Mod
+	)*
+;
+
+Mod returns Expression:
+	MulOrDiv (
+		({Mod.left=current} op=('mod' ))
+		right=MulOrDiv
+	)*
+;
+
+MulOrDiv returns Expression:
+	Expo (
+		({MulOrDiv.left=current} op=('*' | '/'))  
+		right=Expo
+	)*
+;
+
+// exponential operator
+Expo returns Expression:
+	Prefixed (
+		({Expo.left=current} op=('^' ))  
+		right=Prefixed
+	)*
+;
+
+Prefixed returns Expression:
+    {Not} =>"!" expression=Atomic | /* right associativity */
+    {ArithmeticSigned} =>"-" expression=Atomic | /* right associativity */
+    Atomic
+;
+
+Atomic returns Expression:
+	  {Primary} '(' expr=Expression ')'
+	| {IntConstant} value=INT
+	| {BoolConstant} value=('true' | 'false')
+	| {StringConstant} value=STRING
+	| VarRef
+;
+
+

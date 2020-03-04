@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: de.nicogreve.dsl.expressions.ide
+Bundle-ManifestVersion: 2
+Bundle-Name: de.nicogreve.dsl.expressions.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: de.nicogreve.dsl.expressions.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: de.nicogreve.dsl.expressions,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: de.nicogreve.dsl.expressions.ide.contentassist.antlr.internal,
+ de.nicogreve.dsl.expressions.ide.contentassist.antlr

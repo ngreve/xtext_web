@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: de.nicogreve.dsl.expressions
+Bundle-ManifestVersion: 2
+Bundle-Name: de.nicogreve.dsl.expressions
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: de.nicogreve.dsl.expressions; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: de.nicogreve.dsl.expressions.services,
+ de.nicogreve.dsl.expressions.expressions.impl,
+ de.nicogreve.dsl.expressions.parser.antlr,
+ de.nicogreve.dsl.expressions.expressions,
+ de.nicogreve.dsl.expressions.validation,
+ de.nicogreve.dsl.expressions.scoping,
+ de.nicogreve.dsl.expressions.expressions.util,
+ de.nicogreve.dsl.expressions.serializer,
+ de.nicogreve.dsl.expressions.parser.antlr.internal,
+ de.nicogreve.dsl.expressions.generator,
+ de.nicogreve.dsl.expressions
+Import-Package: org.apache.log4j

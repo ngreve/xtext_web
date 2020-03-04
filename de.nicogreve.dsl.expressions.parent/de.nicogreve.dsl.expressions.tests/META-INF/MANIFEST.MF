@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: de.nicogreve.dsl.expressions.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: de.nicogreve.dsl.expressions.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: de.nicogreve.dsl.expressions.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: de.nicogreve.dsl.expressions,
+ org.junit.jupiter.api;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: de.nicogreve.dsl.expressions.tests;x-internal=true
