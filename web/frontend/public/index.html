@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- FILE: <project>/frontend/public/index.html -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -22,8 +23,8 @@
       var baseUrl = window.location.pathname;
       var fileIndex = baseUrl.indexOf('index.html');
 
-      /* _xtext will hold our ready-to-use editor. It will
-         be available through the window object */
+      /* _xtext will contain our ready-to-use editor. It will
+         be available through the window object. */
       var _xtext = null;
       if (fileIndex > 0)
         baseUrl = baseUrl.slice(0, fileIndex);
@@ -39,14 +40,14 @@
         require(['xtext/xtext-ace'], function(xtext) {
           _xtext = xtext;
           /* The editor (_xtext) is now ready-to-use.
-             We emit an 'ready' event to inform the XtextEditor component about it. */
+             We emit an 'ready' event to inform the App.vue component about it. */
           xtextReadyEvent.emit('ready');
           /* The information flow continues in the mounted function of the
-             XtextEdtor component. */
+             App.vue component. */
         })
       })
     </script>
-    <!-- COPIED END --->
+    <!-- COPY END -->
 
   </head>
   <body>

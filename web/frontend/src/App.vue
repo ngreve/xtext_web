@@ -1,4 +1,5 @@
 <template>
+  <!-- FILE: <project>/frontend/src/App.vue -->
   <div id="app">
     <div class="content">
       <!-- ATTENTION: data-editor-xtext-lang has to
@@ -19,13 +20,12 @@ export default {
     }
   },
   mounted () {
-    /* If the _xtext object is not null as we mount this component, we can continue
-       configuring our editor, otherwise we wait for the 'ready' event */
+    /* If the _xtext object is not null when we mount this component, we can continue to configure our editor, otherwise we will wait for the 'ready' event */
     (!window._xtext) ? window.xtextReadyEvent.on('ready', this.setXtextEditor) : this.setXtextEditor()
   },
   methods: {
     setXtextEditor () {
-      /* The serviceUrl holds the URL, with which
+      /* The serviceUrl contains the URL, on which
          the language server is reachable */
       this.xtextEditor = window._xtext.createEditor({
         baseUrl: '/',
@@ -54,7 +54,7 @@ html
 
 .content {
   position: relative;
-  width: 90%;
+  width: 45%;
   height: 80%;
 }
 
