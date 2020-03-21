@@ -20,7 +20,7 @@ class ServerLauncher {
 	def static void main(String[] args) {
 		val server = new Server(new InetSocketAddress('localhost', 8090))
 		server.handler = new WebAppContext => [
-			resourceBase = '/'
+			resourceBase = 'WebRoot'
 			welcomeFiles = #["index.html"]
 			contextPath = "/"
 			configurations = #[
@@ -34,7 +34,7 @@ class ServerLauncher {
 		]
 		val log = new Slf4jLog(ServerLauncher.name)
 		try {
-			server.start
+			server.start 
 			log.info('Server started ' + server.getURI + '...')
 			new Thread[
 				log.info('Press enter to stop the server...')

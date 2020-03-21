@@ -120,7 +120,8 @@ class ExpressionsGenerator extends AbstractGenerator {
 	}
 
 	def dispatch CharSequence compile(PrintCommand it) {
-		'''PRINT COMMAND NOT IMPLEMENTED'''
+		val p = params.map(p|"(" + p.compile + ")").join(' + ')
+		'''window.printConsoleOutput(«p»)'''
 	}
 	
 		
