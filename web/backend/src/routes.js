@@ -1,8 +1,9 @@
 // FILE: <project>/backend/src/routes.js
 'use strict'
 
-var httpProxy = require('http-proxy')
-var apiProxy = httpProxy.createProxyServer()
+const httpProxy = require('http-proxy')
+const apiProxy = httpProxy.createProxyServer()
+const CodeGeneratorController = require('./controllers/CodeGeneratorController')
 
 // location of our exported language server
 const LANGUAGE_SERVER = 'http://localhost:8090/'
@@ -18,7 +19,7 @@ apiProxy.on('error', function (error, req, res) {
     res.writeHead(500, { 'content-type': 'application/json' })
   }
 
-  var json = { error: 'proxy_error', reason: error.message }
+  const json = { error: 'proxy_error', reason: error.message }
   res.end(JSON.stringify(json))
 })
 
@@ -27,4 +28,7 @@ module.exports = (app) => {
   app.all('/xtext-service/*', function (req, res) {
     apiProxy.web(req, res, { target: LANGUAGE_SERVER })
   })
+
+  app.post('/compile',
+    CodeGeneratorController.compileToJS)
 }

@@ -9,8 +9,7 @@ module.exports = {
     return new Promise(function (resolve, reject) {
       const baseDir = path.dirname(path.resolve(languagePath))
       try {
-        // !ATTENTION: Change this path to point to your java executable
-        const ls = spawn(`/usr/bin/java -jar ${languagePath}`, {
+        const ls = spawn(`java -jar ${languagePath}`, {
           shell: true,
           cwd: baseDir
         })
