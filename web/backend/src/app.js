@@ -3,11 +3,11 @@
 const path = require('path')
 const cors = require('cors')
 const morgan = require('morgan')
-const express = require('express')
 const bodyParser = require('body-parser')
+const express = require('express')
+const app = express()
 
-var app = express()
-
+const config = require('./config')
 const LanguageServerService = require('./services/LanguageServerService.js')
 
 /*
@@ -30,7 +30,7 @@ app.use(bodyParser.json())
 require('./routes')(app)
 async function run () {
   const port = 8085 // Configure your port
-  const languageServerPath = path.resolve('language_server/language_server.jar')
+  const languageServerPath = path.resolve(process.cwd(), config.paths.languageServer)
   await LanguageServerService.startLanguageServer(languageServerPath)
   app.listen(port) // Start the backend
   console.log(`listining http://localhost:${port}`)
