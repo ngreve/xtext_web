@@ -1,4 +1,4 @@
-This is part of a tutorial named "Xtext on the Web - Part 1" 
+This is part of a tutorial named [Xtext on the Web](https://nicogreve.de/tag/xtext-on-the-web)
 # How to run this project
 The web directory contains a front- and backend to run the Xtext project in the de.nicogreve.dsl.expressions.parent directory.
 
