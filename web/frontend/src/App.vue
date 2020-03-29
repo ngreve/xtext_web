@@ -2,8 +2,6 @@
   <!-- FILE: <project>/frontend/src/App.vue -->
   <div id="app">
     <div class="content">
-      <!-- ATTENTION: data-editor-xtext-lang has to
-           contain your language FILE EXTENSION -->
       <div id="xtext-editor" :data-editor-xtext-lang="this.dslFileExtenstion"></div>
     </div>
   </div>
