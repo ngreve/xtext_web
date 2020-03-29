@@ -114,3 +114,4 @@ generated-sources
 !**/dslCompiler/dsl-compiler.jar
 **/target/*
 !.gitkeep
+!**/frontend/.env*

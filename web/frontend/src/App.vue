@@ -12,8 +12,7 @@
     <div class="content">
       <!-- ATTENTION: data-editor-xtext-lang has to
            contain your language FILE EXTENSION -->
-      <div id="xtext-editor" data-editor-xtext-lang="exp"></div>
-      <ConsoleView id="console-view" />
+      <div id="xtext-editor" :data-editor-xtext-lang="this.dslFileExtenstion"></div>
     </div>
   </div>
 </template>
@@ -31,7 +30,8 @@ export default {
   data () {
     return {
       xtextEditor: null,
-      scriptContainer: null
+      scriptContainer: null,
+      dslFileExtenstion: ''
     }
   },
   mounted () {
@@ -42,11 +42,18 @@ export default {
     setXtextEditor () {
       /* The serviceUrl contains the URL, on which
          the language server is reachable */
-      this.xtextEditor = window._xtext.createEditor({
-        baseUrl: '/',
-        serviceUrl: `${protocol}${baseUrl}xtext-service`,
-        syntaxDefinition: 'xtext-resources/generated/mode-exp.js',
-        enableCors: true
+      this.dslFileExtenstion = window._dslFileExtenstion
+
+      /* We have to wait untill rendering of this.dslFileExtenstion
+        in data-editor-xtext-lang attribute finishes
+        before we initialize the editor */
+      this.$nextTick(() => {
+        this.xtextEditor = window._xtext.createEditor({
+          baseUrl: '/',
+          serviceUrl: `${protocol}${baseUrl}xtext-service`,
+          syntaxDefinition: `xtext-resources/generated/mode-${this.dslFileExtenstion}.js`,
+          enableCors: true
+        })
       })
     },
     async compileToJS () {
