@@ -11,6 +11,7 @@
     </div>
     <div class="content">
       <div id="xtext-editor" :data-editor-xtext-lang="this.dslFileExtenstion"></div>
+      <ConsoleView id="console-view" />
     </div>
   </div>
 </template>
