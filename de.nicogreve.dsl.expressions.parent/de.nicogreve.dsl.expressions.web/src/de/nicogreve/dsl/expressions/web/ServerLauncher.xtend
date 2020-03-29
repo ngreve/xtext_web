@@ -20,7 +20,7 @@ class ServerLauncher {
 	def static void main(String[] args) {
 		val server = new Server(new InetSocketAddress('localhost', 8090))
 		server.handler = new WebAppContext => [
-			resourceBase = '/'
+			resourceBase = '/WebRoot'
 			welcomeFiles = #["index.html"]
 			contextPath = "/"
 			configurations = #[

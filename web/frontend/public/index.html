@@ -8,35 +8,35 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
 
-    <!-- Class to notify the XtextEditor component that
+    <!-- Class to notify App.vue that
          the code editor is ready to use -->
-    <script src="Events.js"></script>
+    <script src="<%= BASE_URL %>Events.js"></script>
 
-    <!-- MOSTLY COPIED FROM *.web/index.html -->
-    <!-- Take care of the version number of the exported libraries and thier
-         references within the code down below -->
-    <link rel="stylesheet" type="text/css" href="xtext/2.17.1/xtext-ace.css"/>
-    <script src="webjars/requirejs/2.3.6/require.min.js"></script>
+    <!-- In principle COPIED FROM *.web/index.html -->
+    <link rel="stylesheet" type="text/css" href="<%= BASE_URL %>xtext/<%= VUE_APP_XTEXT_ACE %>/xtext-ace.css"/>
+    <script src="<%= BASE_URL %>webjars/requirejs/<%= VUE_APP_REQUIRE_JS %>/require.min.js"></script>
 
     <script type="text/javascript">
       var xtextReadyEvent = new Events()
-      var baseUrl = window.location.pathname;
+      var baseUrl = '<%= BASE_URL %>';
       var fileIndex = baseUrl.indexOf('index.html');
 
-      /* _xtext will contain our ready-to-use editor. It will
+      /* _xtext will contain our ready-to-use editor. The editor object will
          be available through the window object. */
       var _xtext = null;
+      var _dslFileExtenstion = '<%= VUE_APP_DSL_FILE_EXT %>';
+
       if (fileIndex > 0)
         baseUrl = baseUrl.slice(0, fileIndex);
       require.config({
         baseUrl: baseUrl,
         paths: {
-          'jquery': 'webjars/jquery/3.3.1-1/jquery.min',
-          'ace/ext/language_tools': 'webjars/ace/1.3.3/src/ext-language_tools',
-          'xtext/xtext-ace': 'xtext/2.18.0.M3/xtext-ace'
+          'jquery': 'webjars/jquery/<%= VUE_APP_JQUERY %>/jquery.min',
+          'ace/ext/language_tools': 'webjars/ace/<%= VUE_APP_ACE %>/src/ext-language_tools',
+          'xtext/xtext-ace': 'xtext/<%= VUE_APP_XTEXT_ACE %>/xtext-ace'
         }
       });
-      require(['webjars/ace/1.3.3/src/ace'], function() {
+      require(['webjars/ace/<%= VUE_APP_ACE %>/src/ace'], function() {
         require(['xtext/xtext-ace'], function(xtext) {
           _xtext = xtext;
           /* The editor (_xtext) is now ready-to-use.
