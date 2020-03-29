@@ -1,6 +1,6 @@
 // FILE: <project>/frontend/src/services/ConnectionData.js
 
 module.exports = {
-  baseUrl: 'localhost:8085/',
+  baseUrl: (process.env.NODE_ENV === 'production') ? '<domain_or_IP>/api/' : 'localhost:8090/',
   protocol: 'http://'
 }
