@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "./node_modules/nodemon/bin/nodemon.js src/app.js --exec 'npm run lint && node'",
+    "start:prod": "NODE_ENV=production node src/app.js",
     "lint": "./node_modules/.bin/eslint src/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
