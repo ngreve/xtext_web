@@ -22,8 +22,7 @@ module.exports = {
       // Create the temporary directory
       await fsPromises.mkdir(tmpDir)
       // Define where our dsl code will be at.
-      // !The file extension has to match YOUR DSL extension!
-      const dslCodePath = path.resolve(tmpDir, 'code.exp')
+      const dslCodePath = path.resolve(tmpDir, `code.${config.dslFileExt}`)
       // Write the sent code to a file
       await fsPromises.writeFile(dslCodePath, req.body.code)
       // Run the compile: the argument is the path to the received code, which
