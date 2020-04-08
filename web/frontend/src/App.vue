@@ -26,9 +26,9 @@ export default {
     setXtextEditor () {
       /* The serviceUrl contains the URL, on which
          the language server is reachable */
-      this.dslFileExtenstion = window._dslFileExtenstion
+      this.dslFileExtension = window._dslFileExtension
 
-      /* We have to wait untill rendering of this.dslFileExtenstion
+      /* We have to wait until rendering of this.dslFileExtenstion
         in data-editor-xtext-lang attribute finishes
         before we initialize the editor */
       this.$nextTick(() => {
