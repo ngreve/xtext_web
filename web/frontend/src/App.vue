@@ -10,7 +10,7 @@
       </button>
     </div>
     <div class="content">
-      <div id="xtext-editor" :data-editor-xtext-lang="this.dslFileExtenstion"></div>
+      <div id="xtext-editor" :data-editor-xtext-lang="this.dslFileExtension"></div>
       <ConsoleView id="console-view" />
     </div>
   </div>
@@ -30,7 +30,7 @@ export default {
     return {
       xtextEditor: null,
       scriptContainer: null,
-      dslFileExtenstion: ''
+      dslFileExtension: ''
     }
   },
   mounted () {
@@ -43,14 +43,14 @@ export default {
          the language server is reachable */
       this.dslFileExtension = window._dslFileExtension
 
-      /* We have to wait until rendering of this.dslFileExtenstion
+      /* We have to wait until rendering of this.dslFileExtension
         in data-editor-xtext-lang attribute finishes
         before we initialize the editor */
       this.$nextTick(() => {
         this.xtextEditor = window._xtext.createEditor({
           baseUrl: '/',
           serviceUrl: `${protocol}${baseUrl}xtext-service`,
-          syntaxDefinition: `xtext-resources/generated/mode-${this.dslFileExtenstion}.js`,
+          syntaxDefinition: `xtext-resources/generated/mode-${this.dslFileExtension}.js`,
           enableCors: true
         })
       })
