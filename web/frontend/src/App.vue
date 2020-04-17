@@ -10,7 +10,7 @@
       </button>
     </div>
     <div class="content">
-      <div id="xtext-editor" :data-editor-xtext-lang="this.dslFileExtenstion"></div>
+      <div id="xtext-editor" :data-editor-xtext-lang="this.dslFileExtension"></div>
       <ConsoleView id="console-view" />
     </div>
   </div>
@@ -30,7 +30,7 @@ export default {
     return {
       xtextEditor: null,
       scriptContainer: null,
-      dslFileExtenstion: ''
+      dslFileExtension: ''
     }
   },
   mounted () {
